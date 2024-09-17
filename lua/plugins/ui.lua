@@ -18,6 +18,7 @@ return {
         },
         opts = { skip = true },
       })
+
       local focused = true
       vim.api.nvim_create_autocmd("FocusGained", {
         callback = function()
@@ -45,6 +46,26 @@ return {
           view = "split",
           opts = { enter = true, format = "details" },
           filter = {},
+        },
+      }
+
+      -- Center messages vertically in the middle of the screen
+      opts.views = {
+        notify_send = {
+          backend = "popup",
+          relative = "editor",
+          position = {
+            row = "50%", -- Center vertically
+            col = "50%", -- Center horizontally
+          },
+          size = {
+            width = 80, -- Width of the popup
+            height = "auto", -- Adjust height automatically
+          },
+          border = {
+            style = "rounded", -- Rounded border for aesthetics
+          },
+          zindex = 100, -- Make sure it's on top of other UI elements
         },
       }
 
